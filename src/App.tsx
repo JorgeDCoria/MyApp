@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import './App.css';
+import "./App.css";
 
 interface Sub {
   nick: string;
   subMonths: number;
   avatar: string;
   //puede o no tener description
-  description?:string
+  description?: string;
 }
 
 function App() {
@@ -24,35 +24,36 @@ function App() {
   //   </div>
   // );
 
-  const [subs, setSubs] = useState<Array<Sub>>([{
-    nick:"dapelu",
-    subMonths: 3,
-    avatar: 'https://i.pravatar.cc/150?dapelu',
-    description: 'dapelo es una sub'
-  },
-  {
-    nick:"dapeluOne",
-    subMonths: 5,
-    avatar: 'https://i.pravatar.cc/150?dapelu',
-  
-  }
+  const [subs, setSubs] = useState<Array<Sub>>([
+    {
+      nick: "dapelu",
+      subMonths: 3,
+      avatar: "https://i.pravatar.cc/150?dapelu",
+      description: "dapelo es una sub",
+    },
+    {
+      nick: "dapeluOne",
+      subMonths: 5,
+      avatar: "https://i.pravatar.cc/150?dapelu",
+    },
+  ]);
 
-])
-
-  return(
+  return (
     <div>
       <h1>amigos</h1>
       <ul>
-        {
-          subs.map(sub => {
-            return <li key={sub.nick}>
+        {subs.map((sub) => {
+          return (
+            <li key={sub.nick}>
               <img src={sub.avatar} alt={`Avatar for ${sub.nick}`} />
-              <h4>{sub.nick}(<small>{sub.subMonths}</small>)</h4>
+              <h4>
+                {sub.nick}(<small>{sub.subMonths}</small>)
+              </h4>
               {/* como la propiedad description puede no existir se debe especificar, solucionamos con ? */}
-              <p>{sub.description?.substring(0,100)}</p>
+              <p>{sub.description?.substring(0, 100)}</p>
             </li>
-          })
-        }
+          );
+        })}
       </ul>
     </div>
   );
